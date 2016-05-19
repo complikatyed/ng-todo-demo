@@ -1,0 +1,17 @@
+{
+  "name": "ng-todo-demo",
+  "description": "An AngularJS practice app",
+  "main": "index.js",
+  "authors": [
+    "Katye Russell <katye.russell@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/complikatyed/ng-todo-demo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

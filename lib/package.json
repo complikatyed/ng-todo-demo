@@ -1,0 +1,19 @@
+{
+  "name": "ng-todo-demo",
+  "version": "1.0.0",
+  "description": "An AngularJS practice app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/complikatyed/ng-todo-demo.git"
+  },
+  "author": "Katye Russell <katye.russell@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/complikatyed/ng-todo-demo/issues"
+  },
+  "homepage": "https://github.com/complikatyed/ng-todo-demo#readme"
+}
