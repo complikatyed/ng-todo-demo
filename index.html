@@ -32,15 +32,37 @@
 
 
   <div ng-controller="TodoCtrl">
-  <!-- Anything that needs to use the controller goes inside this div -->
+  <!-- ****** Anything that needs to use the controller goes inside this div ****** -->
     <div class="col-xs-6 col-xs-offset-3">
       <button class="col-xs-6 btn btn-success" ng-click="newItem()">New Item</button>
       <button class="col-xs-6 btn btn-info" ng-click="allItem()">All Items</button>
     </div>
     <div class="col-xs-10 col-xs-offset-1 main-container">
+
+  <!-- ********** Display of all existing tasks ********** -->
       <div class="col-xs-12" ng-show="showListView">
         <h1>To Do List</h1>
+        <!-- ***** set up for searching/filtering *****  -->
+        <div class=row>
+          <div class="col-xs-6 col-xs-offset-3">
+            <input type="text" placeholder="Search for..." ng-model="searchText"/>
+          </div>
+        </div>
+        <div ng-repeat="thingy in items | filter: searchText">  <!-- for each loop -->
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="col-xs-1"><input type="checkbox" name=""/></div>
+              <div class="col-xs-8">{{thingy.task}}</div>
+              <div class="col-xs-1">{{thingy.dueDate}}</div>
+              <div class="col-xs-1">{{thingy.assignedTo}}</div>
+              <div class="col-xs-1"><button class="btn btn-danger">X</button></div>
+            </div>
+          </div>
+        </div>
       </div>
+
+  <!-- ********** Forms for adding a new task ********** -->
+
       <div class="col-xs-12" ng-show="!showListView">
         <h1>New to do</h1>
         <form>
