@@ -1,12 +1,14 @@
-console.log("Hello");
+'use strict';
 
-var app = angular.module("TodoApp", []);
+console.log('Hello');
 
-app.controller("NavCtrl", function($scope){
-  $scope.navItems = [{name: "Logout"}, {name: "All Items"}, {name:"New Item"}]
+var app = angular.module('TodoApp', []);
+
+app.controller('NavCtrl', function($scope){
+  $scope.navItems = [{name: 'Logout'}, {name: 'All Items'}, {name:'New Item'}]
 })
 
-app.controller("TodoCtrl", function($scope){
-  $scope.welcome = "hello";
+app.controller('TodoCtrl', function($scope){
+  $scope.welcome = 'hello';
 
 })
