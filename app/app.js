@@ -1,14 +1,21 @@
-'use strict';
+var app = angular.module('TodoApp', ['ngRoute']);
 
-console.log('Hello');
+app.config(function($routeProvider){
+  $routeProvider.
+    when('/items/list', {
+      templateUrl:'partials/item-list.html',
+      controller: 'ItemListCtrl'
+    }).
+    when('/items/new', {
+      templateUrl: 'partials/item-new.html',
+      controller: 'ItemNewCtrl'
+    }).
+    when('/items/details', {
+      templateUrl: 'partials/item-details.html',
+      controller: 'ItemViewCtrl'
+    }).
+    otherwise('/items/list');
+}
+);
 
-var app = angular.module('TodoApp', []);
-
-app.controller('NavCtrl', function($scope){
-  $scope.navItems = [{name: 'Logout'}, {name: 'All Items'}, {name:'New Item'}]
-})
-
-app.controller('TodoCtrl', function($scope){
-  $scope.welcome = 'hello';
-
-})
+// add Angular Route: 'bower install angular-route --save'
