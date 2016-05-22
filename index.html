@@ -3,9 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>ng-todo-app</title>
+<<<<<<< HEAD
   <link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"></link>
   <link rel="stylesheet" href="styles/css/main.css"></link>
+=======
+  <link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">  
+  <link rel="stylesheet" href="styles/css/main.css">
+>>>>>>> master
 </head>
 <body  ng-app="TodoApp">
 <nav class="navbar navbar-default" ng-controller="NavCtrl">
@@ -24,89 +30,27 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right" ng-repeat="thingy in navItems">
-        <li><a href="#">{{thingy.name}}</a></li>
+        <li><a ng-href="{{thingy.url}}">{{thingy.name}}</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
-
-
-  <div ng-controller="TodoCtrl">
-  <!-- ****** Anything that needs to use the controller goes inside this div ****** -->
-    <div class="col-xs-6 col-xs-offset-3">
-      <button class="col-xs-6 btn btn-success" ng-click="newItem()">New Item</button>
-      <button class="col-xs-6 btn btn-info" ng-click="allItem()">All Items</button>
-    </div>
-    <div class="col-xs-10 col-xs-offset-1 main-container">
-
-  <!-- ********** Display all existing tasks ********** -->
-      <div class="col-xs-12" ng-show="showListView">
-        <h1>To Do List</h1>
-        <!-- ***** set up for searching/filtering *****  -->
-        <div class="row">
-          <div class="col-xs-6 col-xs-offset-3">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <button class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
-              </span>
-              <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText"/>
-            </div>
-          </div>
-        </div>
-        <div ng-repeat="thingy in items | filter: searchText">  <!-- for each loop -->
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <div class="col-xs-1"><input type="checkbox" name=""/></div>
-              <div class="col-xs-8">{{thingy.task}}</div>
-              <div class="col-xs-1">{{thingy.dueDate}}</div>
-              <div class="col-xs-1">{{thingy.assignedTo}}</div>
-              <div class="col-xs-1"><button class="btn btn-danger">X</button></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-  <!-- ********** Forms for adding a new task ********** -->
-
-      <div class="col-xs-12" ng-show="!showListView">
-        <h1>New to do</h1>
-        <form>
-          <div class="form-group">
-            <label>Task Description</label>
-            <input type="text" class="form-control" placeholder="Have reading fun" ng-model="newTask.task"/>
-          </div>
-          <div class="form-group">
-            <label>Due Date</label>
-            <input type="text" class="form-control" placeholder="11/12/15" ng-model="newTask.dueDate"/>
-          </div>
-          <div class="form-group">
-            <label>Assigned To</label>
-            <input type="text" class="form-control" placeholder="Matthew" ng-model="newTask.assignedTo"/>
-          </div>
-          <div class="form-group">
-            <label>Location</label>
-            <input type="text" class="form-control" placeholder="Zoe's house" ng-model="newTask.location"/>
-          </div>
-          <div class="form-group">
-            <label>Urgency</label>
-            <input type="text" class="form-control" placeholder="medium" ng-model="newTask.urgency"/>
-          </div>
-          <div class="form-group">
-            <label>Dependencies</label>
-            <input type="text" class="form-control" placeholder="sunglasses, monkey, comic book" ng-model="newTask.dependencies"/>
-          </div>
-          <button class="btn btn-default" ng-click="addNewItem()">Submit</button>
-        </form>
-      </div>
-    </div>
-
+<div class="col-xs-10 col-xs-offset-1 main-container">
+  <div class="col-xs-12" ng-view>
   </div>
+</div>
+
 
 <script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js">
 </script>
 <script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script>
 <script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/controllers/navCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/ItemViewCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/ItemNewCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/ItemListCtrl.js"></script>
 </body>
 </html>
