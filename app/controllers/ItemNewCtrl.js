@@ -2,38 +2,7 @@ app.controller('ItemNewCtrl', function($scope){
 
   $scope.newTask = {};
 
-  $scope.items = [
-    {
-      id: 0,
-      task: "mow the lawn",
-      isCompleted: true,
-      dueDate: "12/1/17",
-      assignedTo: "greg",
-      location: "Zoe's house",
-      urgency: "low",
-      dependencies: "sunshine, clippers, hat, water, headphones"
-    },
-    {
-      id: 1,
-      task: "grade quizzes",
-      isCompleted: false,
-      dueDate: "5/22/16",
-      assignedTo: "Joe",
-      location: "NSS",
-      urgency: "high",
-      dependencies: "wifi, tissues, vodka"
-    },
-    {
-      id: 2,
-      task: "take a nap",
-      isCompleted: false,
-      dueDate: "5/21/16",
-      assignedTo: "Zoe",
-      location: "Zoe's house",
-      urgency: "medium",
-      dependencies: "hammock, cat, pillow"
-    }
-  ];
+  $scope.items = [];
 
   $scope.addNewItem = function() {
     $scope.newTask.isCompleted = false;
