@@ -15,7 +15,4 @@ app.config(function($routeProvider){
       controller: 'ItemViewCtrl'
     }).
     otherwise('/items/list');
-}
-);
-
-// add Angular Route: 'bower install angular-route --save'
+});
