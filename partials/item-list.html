@@ -16,6 +16,8 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="col-xs-1"><input type="checkbox" name=""/></div>
+      <!-- The 'ng-href' on the next line allows injection of this {{thingy.id}} -->
+      <!-- so we can use that item's id to get to the detailed view of that task -->
       <div class="col-xs-8"><a ng-href="#/items/{{thingy.id}}">{{thingy.task}}</a></div>
       <div class="col-xs-1">{{thingy.dueDate}}</div>
       <div class="col-xs-1">{{thingy.assignedTo}}</div>
