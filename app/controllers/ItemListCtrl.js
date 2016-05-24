@@ -1,9 +1,10 @@
 // Angular controllers are iifes
 
-app.controller('ItemListCtrl', function($scope, $http){
+app.controller('ItemListCtrl', function($scope, $http, $location){
 
   $scope.items = [];
 
+  var getItems = function() {
   $http.get("https://groovytodoapp.firebaseio.com/items.json")
     .success(function(itemObject){
 
@@ -20,9 +21,19 @@ app.controller('ItemListCtrl', function($scope, $http){
 
         // Push the items into the 'items' array, and give it the id from prev line
         $scope.items.push(itemCollection[key]);
-      })
-
-
+      });
     });
+  };
+  getItems();
+
+  $scope.itemDelete = function(itemId) {
+    $http
+      .delete(`https://groovytodoapp.firebaseio.com/items/${itemId}.json`)
+      .success(function(response){
+        $scope.items = []; // <-- have to re-set the array to avoid duplication of data
+        getItems();
+      });
+  };
+
 
 });
