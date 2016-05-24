@@ -1,0 +1,16 @@
+{
+  "predef": [
+    "document",
+    "console",
+    "angular"
+  ],
+  "esversion": 6,
+  "globalstrict": true,
+  "curly": true,
+  "eqeqeq": true,
+  "undef": true,
+  "unused": true,
+  "globals": {
+    "$": true
+  }
+}
