@@ -1,46 +1,21 @@
-app.controller('ItemNewCtrl', function($scope){
+app.controller('ItemNewCtrl', function($scope, $http, $location, itemStorage){
 
-  $scope.newTask = {};
+  $scope.newTask = {    // We need to add these blanks in case the user skips a field
+    assignedTo: "",   // (because any skipped properties will get dropped otherwise)
+    dependencies: "", // (and we want all of the data to have the same structure)
+    dueDate: "",
+    isCompleted: false,
+    location: "",
+    task: "",
+    urgency: ""
+  };
 
-  $scope.items = [
-    {
-      id: 0,
-      task: "mow the lawn",
-      isCompleted: true,
-      dueDate: "12/1/17",
-      assignedTo: "greg",
-      location: "Zoe's house",
-      urgency: "low",
-      dependencies: "sunshine, clippers, hat, water, headphones"
-    },
-    {
-      id: 1,
-      task: "grade quizzes",
-      isCompleted: false,
-      dueDate: "5/22/16",
-      assignedTo: "Joe",
-      location: "NSS",
-      urgency: "high",
-      dependencies: "wifi, tissues, vodka"
-    },
-    {
-      id: 2,
-      task: "take a nap",
-      isCompleted: false,
-      dueDate: "5/21/16",
-      assignedTo: "Zoe",
-      location: "Zoe's house",
-      urgency: "medium",
-      dependencies: "hammock, cat, pillow"
-    }
-  ];
-
-  $scope.addNewItem = function() {
-    $scope.newTask.isCompleted = false;
-    $scope.newTask.id = $scope.items.length;
-    $scope.items.push($scope.newTask);
-    console.log($scope.items);
-    $scope.newTask = '';
+  $scope.addNewItem = function(){
+    itemStorage.postNewItem($scope.newTask)
+      .then(function successCallback(response) {
+        $location.url("/items/list");
+      });
   };
 
 });
+
