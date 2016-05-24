@@ -1,3 +1,5 @@
+"use strict";
+
 app.controller('ItemNewCtrl', function($scope, $http, $location, itemStorage){
 
   $scope.newTask = {    // We need to add these blanks in case the user skips a field
