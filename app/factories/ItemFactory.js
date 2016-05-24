@@ -23,7 +23,6 @@ app.factory("itemStorage", function($q, $http) {
   };
 
   var deleteItem = function(itemId){
-    console.log("itemId", itemId);
     return $q(function(resolve, reject){
       $http
         .delete(`https://groovytodoapp.firebaseio.com/items/${itemId}.json`)

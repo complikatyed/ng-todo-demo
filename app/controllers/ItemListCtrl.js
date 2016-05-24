@@ -1,3 +1,5 @@
+"use strict";
+
 app.controller('ItemListCtrl', function($scope, $http, $location, itemStorage){
 
   $scope.items = [];
