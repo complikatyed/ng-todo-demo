@@ -4,11 +4,10 @@ app.controller('ItemListCtrl', function($scope, $http){
 
   $scope.items = [];
 
-  $http.get("./data/items.json")
+  $http.get("https://groovytodoapp.firebaseio.com/items.json")
     .success(function(itemObject){
 
-      // 'itemObject.items' <- gets just the items from the object
-      var itemCollection = itemObject.items;
+      var itemCollection = itemObject;
 
       // 'Object.keys(itemCollection)' <-- returns an array of the objects
       // 'forEach(key)' goes through every key in the array and stores the key
