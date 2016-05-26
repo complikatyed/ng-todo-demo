@@ -1,13 +1,13 @@
 "use strict";
 
-app.factory("itemStorage", function($q, $http) {
+app.factory("itemStorage", function($q, $http, firebaseURL) {
 
   var getItemList = function() {
     let items = [];
 
     return $q(function(resolve, reject) {
       $http
-        .get("https://groovytodoapp.firebaseio.com/items.json")
+        .get(firebaseURL + "items.json")
         .success(function(itemObject){
           var itemCollection = itemObject;
           Object.keys(itemCollection).forEach(function(key){
@@ -25,7 +25,7 @@ app.factory("itemStorage", function($q, $http) {
   var deleteItem = function(itemId){
     return $q(function(resolve, reject){
       $http
-        .delete(`https://groovytodoapp.firebaseio.com/items/${itemId}.json`)
+        .delete(firebaseURL + "items/" + itemId + ".json")
         .success(function(objectFromFirebase){
           resolve(objectFromFirebase);
         })
@@ -38,7 +38,7 @@ app.factory("itemStorage", function($q, $http) {
   var postNewItem = function(newItem){
     return $q(function(resolve, reject) {
       $http
-        .post("https://groovytodoapp.firebaseio.com/items.json",
+        .post(firebaseURL + "items.json",
           JSON.stringify({
             assignedTo: newItem.assignedTo,
             dependencies: newItem.dependencies,
@@ -57,6 +57,43 @@ app.factory("itemStorage", function($q, $http) {
     });
   };
 
-  return {getItemList:getItemList, deleteItem:deleteItem, postNewItem:postNewItem};
+  var getSingleItem = function(itemId){
+    return $q(function(resolve, reject) {
+      $http
+        .get(firebaseURL + "items/" + itemId + ".json")
+        .success(function(itemObject){
+          resolve(itemObject);
+        })
+        .error(function(error){
+          reject(error);
+        });
+    });
+  };
+
+
+  var updateItem = function(itemId, newItem){
+    return $q(function(resolve, reject) {
+      $http
+        .put(firebaseURL + "items/" + itemId + ".json",
+          JSON.stringify({
+            assignedTo: newItem.assignedTo,
+            dependencies: newItem.dependencies,
+            dueDate: newItem.dueDate,
+            isCompleted: newItem.isCompleted,
+            location: newItem.location,
+            task: newItem.task,
+            urgency: newItem.urgency
+          }))
+        .success(function(objectFromFirebase) {
+          resolve(objectFromFirebase);
+        })
+        .error(function(error) {
+          reject(error);
+        });
+    });
+  };
+
+
+  return {getSingleItem:getSingleItem, getItemList:getItemList, deleteItem:deleteItem, postNewItem:postNewItem, updateItem:updateItem};
 
 });

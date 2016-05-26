@@ -1,4 +1,7 @@
-var app = angular.module('TodoApp', ['ngRoute']);
+"use strict";
+
+var app = angular.module('TodoApp', ['ngRoute'])
+  .constant("firebaseURL", "https://groovytodoapp.firebaseio.com/");
 
 app.config(function($routeProvider){
   $routeProvider.
@@ -13,6 +16,10 @@ app.config(function($routeProvider){
     when('/items/:itemId', {  //  <-- the colon tells Angular that something will get filled in there
       templateUrl: 'partials/item-details.html',
       controller: 'ItemViewCtrl'
+    }).
+    when('/items/:itemId/edit', {
+      templateUrl: 'partials/item-new.html',
+      controller: 'ItemEditCtrl'
     }).
     otherwise('/items/list');
 });
